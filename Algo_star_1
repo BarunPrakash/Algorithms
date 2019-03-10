@@ -1,0 +1,139 @@
+/*******************************************************************
+
+Designed problems:-
+1{
+:-> Two aray one is acceding other is descending
+ :->Remove the  duplicate upto only half of full array size
+ -> Swap   nibble  of first array
+ -> use function pointer to control
+->put all odd number first in acceding then even number
+}
+2{
+	create linked list (print /insert/delete/sack/Queu)
+
+
+}
+3{
+
+	create tree (insert /delete/add/transverse)
+
+}
+
+4{
+
+
+
+}
+
+ *
+ *
+ *
+ **********************************************************************/
+
+
+#include<stdio.h>
+#include<stdint.h>
+#include<string.h>
+#include<stdlib.h>
+
+typedef struct
+{
+  uint8_t  arrArrA[8];
+  uint8_t  arrArrB[8];
+  uint8_t  arrArrAx[4];
+  uint8_t  arrArrBx[4];
+
+}ArrayContainer;
+
+ArrayContainer globlal_Array;
+
+
+void findRepeatableNumberArrayA( ArrayContainer *arrLocal)
+{
+
+	uint8_t count=0,index=0;
+
+	for(count =0 ;count<8;count++)
+	{
+		if(arrLocal->arrArrA[count]!=arrLocal->arrArrA[count+1])
+		{
+			arrLocal->arrArrAx[index++] = arrLocal->arrArrA[count];
+			if(index ==4)
+			{
+				break;
+			}
+
+		}
+	}
+	for(count =0 ;count<4;count++)
+	{
+		printf("%d",arrLocal->arrArrAx[count]);
+		printf("\n");
+	}
+
+}
+
+void findByteNybble(ArrayContainer   *arrLocal)
+{
+
+	uint8_t count=0;
+	for(count =0 ;count<4;count++)
+	{
+		arrLocal->arrArrAx[count] =(((arrLocal->arrArrAx[count]&0X0F) <<4) | \
+				((arrLocal->arrArrAx[count]&0XF0)>>4));
+	}
+	for(count =0 ;count<4;count++)
+	{
+		printf("%d",arrLocal->arrArrAx[count]);
+		printf("\n");
+	}
+
+
+
+}
+
+void stringReverseUperCase(char *str)
+{
+	if(*str)
+	{
+
+		stringReverseUperCase(str+1);
+
+		if(*str >66 && *str <91)
+		{
+			printf("%c", (*str)+32);
+		}
+		else
+		{
+			printf("%c", (*str)-32);
+		}
+	}
+
+}
+
+
+
+int main()
+{
+
+	//ArrayContainer A_container[]={{2,3,3,6,7,7,9,11},{15,15,13,13,7,6,3,2},{0,0,0,0},{0,0,0,0}};
+	int a[]={1,2,3,4,5};
+	int *b=a;
+	int p;
+	printf("%d",sizeof(*b));
+
+	//char str[] ="baRun";
+
+	//findRepeatableNumberArrayA(&A_container);
+	//findByteNybble(&A_container);
+	//stringReverseUperCase(str);
+
+
+
+
+
+
+	return 0;
+
+
+}
